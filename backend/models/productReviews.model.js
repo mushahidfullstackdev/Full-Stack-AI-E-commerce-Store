@@ -1,4 +1,4 @@
-import connectionIns from "../database/db";
+import pool from "../database/db.js";
 
 export async function createProductReviewsTable() {
   try {
@@ -11,7 +11,7 @@ export async function createProductReviewsTable() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,       
         FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,       
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE       );`;
-    await connectionIns.query(query);
+    await pool.query(query);
   } catch (error) {
     console.error("Failed To Create Products Reviews Table.", error);
     process.exit(1);

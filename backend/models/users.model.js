@@ -1,7 +1,7 @@
- import connectionIns from "../database/db";
+ import connectionIns from "../database/db.js";
 
 
- export async function createUsertbale() {
+ export async function createUserTable() {
     try {
         const query = `
         CREATE TABLE IF NOT EXISTS users (

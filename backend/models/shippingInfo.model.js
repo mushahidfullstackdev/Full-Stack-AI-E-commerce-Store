@@ -1,4 +1,4 @@
-import connectionIns from "../database/db";
+import pool from "../database/db.js";
 
 export async function createShippingInfoTable() {
   try {
@@ -13,7 +13,7 @@ export async function createShippingInfoTable() {
         pincode VARCHAR(10) NOT NULL,     
         phone VARCHAR(20) NOT NULL,     
         FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE);`;
-    await connectionIns.query(query);
+    await pool.query(query);
   } catch (error) {
     console.error(" Failed To Create Shipping Info Table.", error);
     process.exit(1);

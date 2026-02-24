@@ -1,4 +1,5 @@
-import database from "../database/db.js";
+import pool from "../database/db.js";
+
 export async function createOrderItemTable() {
   try {
     const query = `     CREATE TABLE IF NOT EXISTS order_items (         
@@ -13,7 +14,7 @@ export async function createOrderItemTable() {
         FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,         
         FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE         
     );`;
-    await database.query(query);
+    await pool.query(query);
   } catch (error) {
     console.error(" Failed To Create Ordered Items Table.", error);
     process.exit(1);
